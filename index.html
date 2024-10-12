@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shreyansh & Maanya | Love in 3D</title>
+    <title>Shreyansh ❤️ Maanya | Infinite Love</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #ffafbd, #ffc3a0);
             overflow-x: hidden;
             scroll-behavior: smooth;
@@ -20,7 +20,7 @@
         }
 
         h1 {
-            font-size: 3.5em;
+            font-size: 4em;
             margin-top: 20px;
             background: linear-gradient(45deg, #ff6b6b, #ff9e9e);
             -webkit-background-clip: text;
@@ -28,7 +28,7 @@
         }
 
         h2 {
-            font-size: 2em;
+            font-size: 2.5em;
             color: #fff;
             animation: fadeDown 2s ease-out;
         }
@@ -51,22 +51,26 @@
             max-width: 800px;
             background: #fff;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: 25px;
+            padding: 40px;
             margin-top: 50px;
+            position: relative;
             transform: scale(0.95);
             transition: transform 0.5s ease-in-out;
+            border: 5px solid #ff9e9e;
+            background: linear-gradient(145deg, #ffe2e2, #ffc3a0);
         }
 
         .poem:hover {
-            transform: scale(1);
+            transform: scale(1.02);
         }
 
         .poem p {
-            font-size: 1.3em;
-            line-height: 1.8;
+            font-size: 1.4em;
+            line-height: 2;
             color: #333;
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .scrolling-content {
@@ -78,19 +82,35 @@
 
         .scrolling-content div {
             height: 200px;
-            background: #6b7aff;
+            background: #ff6b6b;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            border-radius: 15px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff;
-            font-size: 1.5em;
+            font-size: 1.7em;
             transition: transform 0.3s ease;
+            position: relative;
         }
 
         .scrolling-content div:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
+            background: #ffafbd;
+        }
+
+        .scrolling-content div::after {
+            content: '💖';
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            font-size: 2.5em;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .scrolling-content div:hover::after {
+            opacity: 1;
         }
 
         .footer {
@@ -102,43 +122,98 @@
 
         .heart-container {
             position: relative;
+            margin-top: 30px;
+            overflow: hidden;
+            width: 100%;
+            height: 300px;
         }
 
         .heart {
             position: absolute;
-            top: -100px;
+            top: 100%;
             left: 50%;
-            width: 60px;
-            height: 60px;
-            background: red;
+            width: 50px;
+            height: 50px;
+            background: #ff6b6b;
             border-radius: 50%;
             transform: rotate(-45deg);
-            animation: float 5s ease infinite;
+            animation: floatUp 7s ease infinite;
         }
 
         .heart:before,
         .heart:after {
             content: '';
             position: absolute;
-            width: 60px;
-            height: 60px;
-            background: red;
+            width: 50px;
+            height: 50px;
+            background: #ff6b6b;
             border-radius: 50%;
         }
 
         .heart:before {
-            top: -30px;
+            top: -25px;
             left: 0;
         }
 
         .heart:after {
-            left: 30px;
+            left: 25px;
             top: 0;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-500px); opacity: 0; }
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+            100% { transform: translateY(-1000px) rotate(-45deg); opacity: 0; }
+        }
+
+        /* Floating Love Bubbles */
+        .bubble {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,182,193,0.7);
+            border-radius: 50%;
+            bottom: 0;
+            animation: riseBubble 10s infinite;
+        }
+
+        .bubble:nth-child(2) {
+            left: 10%;
+            animation-duration: 12s;
+            animation-delay: 2s;
+        }
+
+        .bubble:nth-child(3) {
+            left: 40%;
+            animation-duration: 8s;
+            animation-delay: 1s;
+        }
+
+        .bubble:nth-child(4) {
+            left: 70%;
+            animation-duration: 15s;
+            animation-delay: 4s;
+        }
+
+        @keyframes riseBubble {
+            0% { bottom: -100px; opacity: 0; }
+            50% { opacity: 0.7; }
+            100% { bottom: 100vh; opacity: 0; }
+        }
+
+        /* Sparkle Effect */
+        .sparkle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: sparkleEffect 2s infinite ease-in-out;
+        }
+
+        @keyframes sparkleEffect {
+            0% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(0); }
         }
 
         @media(max-width: 600px) {
@@ -147,15 +222,15 @@
             }
 
             h1 {
-                font-size: 2.5em;
+                font-size: 2.8em;
             }
 
             .poem {
-                padding: 20px;
+                padding: 25px;
             }
 
             .poem p {
-                font-size: 1.1em;
+                font-size: 1.2em;
             }
         }
     </style>
@@ -169,20 +244,20 @@
             <p>
                 Chipi chip chapa chapa, cooking with a smile,<br>
                 Doobi doobi daabaa, you make life worthwhile.<br>
-                Maanya, my love, from Chennai's grace,<br>
+                Maanya, my love, from Chennai's embrace,<br>
                 In my heart, you've found your place.
             </p>
             <p>
-                Explaining phages with care so bright,<br>
+                Explaining phages, with grace so bright,<br>
                 Reading papers, your mind takes flight.<br>
-                You cook for your mom, a queen in disguise,<br>
-                With a heart so pure, and loving eyes.
+                Calligraphy flows from your gentle hand,<br>
+                In our future, together we’ll stand.
             </p>
             <p>
-                Calligraphy flows from your graceful hand,<br>
-                A future together, our love will expand.<br>
                 Hopefully soon, as we plan ahead,<br>
-                We'll marry and share the life we've led.
+                We’ll marry and share the life we've led.<br>
+                With your heart of gold and endless care,<br>
+                My love for you, forever I’ll share.
             </p>
         </div>
 
@@ -192,15 +267,34 @@
             <div>Clarivate 📚</div>
             <div>Calligraphy 🖋️</div>
         </div>
-
-        <div class="heart-container">
-            <div class="heart"></div>
         </div>
 
-        <div class="footer">
-            Made with love by Shreyansh for Maanya
-        </div>
+    <div class="heart-container">
+        <!-- Floating Hearts -->
+        <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="heart" style="left: 20%; animation-delay: 2s;"></div>
+        <div class="heart" style="left: 40%; animation-delay: 4s;"></div>
+        <div class="heart" style="left: 60%; animation-delay: 6s;"></div>
+        <div class="heart" style="left: 80%; animation-delay: 8s;"></div>
     </div>
+
+    <div class="footer">
+        <p>Made with infinite love by Shreyansh for Maanya ❤️</p>
+        <p>You are my everything, my forever, my always.</p>
+    </div>
+
+    <!-- Floating Bubbles -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <!-- Sparkles for Extra Magic -->
+    <div class="sparkle" style="top: 10%; left: 20%; animation-delay: 1s;"></div>
+    <div class="sparkle" style="top: 30%; left: 40%; animation-delay: 3s;"></div>
+    <div class="sparkle" style="top: 50%; left: 60%; animation-delay: 2s;"></div>
+    <div class="sparkle" style="top: 70%; left: 30%; animation-delay: 4s;"></div>
 </body>
-</html>        
-    
+</html>
+        
+                    
