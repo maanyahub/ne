@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maanya & Shreyansh | Love in Motion</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #FF3366;
+            --secondary-color: #33CCFF;
+            --accent-color: #FFCC00;
+            --bg-color: #0A0A1E;
+            --text-color: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content {
+            max-width: 800px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        h1, h2 {
+            font-weight: 700;
+            margin-bottom: 0.5em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 5em;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            font-size: 3em;
+            color: var(--accent-color);
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .poem {
+            font-size: 1.3em;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            opacity: 0;
+            transform: translateY(50px);
+            color: var(--text-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .love-meter {
+            width: 100%;
+            height: 10px;
+            background-color: rgba(255,255,255,0.2);
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .love-meter-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0;
+            animation: float-up 4s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+        }
+
+        @keyframes float-up {
+            0% { transform: translateY(100vh) scale(0); opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+        }
+
+        .calligraphy {
+            font-size: 2.5em;
+            font-weight: 300;
+            color: var(--accent-color);
+            margin-top: 1em;
+            opacity: 0;
+            transform: translateY(30px);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3em; }
+            h2 { font-size: 2em; }
+            .poem { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <div class="section">
+        <div class="content">
+            <h1>Maanya & Shreyansh</h1>
+            <p class="calligraphy">A love story written in vibrant hues</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="content">
+            <h2>Our Colorful Rhyme</h2>
+            <div class="poem">
+                <p>
+                    Chipi chip chapa chapa, colors dance in the air<br>
+                    Doobi doobi daabaa, our love beyond compare<br>
+                    Maanya, my dear from Chennai's vibrant scene<br>
+                    Your culinary magic, a feast fit for a queen
+                </p>
+                <p>
+                    Wibbly wobbly explainer, you paint my world bright<br>
+                    Zibbity zap researcher, your mind a dazzling light<br>
+                    In Clarivate's realm, you shine so clear<br>
+                    Your brilliance, a spectrum I hold dear
+                </p>
+                <p>
+                    Bippity boppity, your heart a rainbow's hue<br>
+                    Flippity flop, our story forever true<br>
+                    Calligraphy queen, with strokes so fine<br>
+                    In my heart's canvas, eternally you shine
+                </p>
+                <p>
+                    Squiggly squaggly, our future's a vivid sight<br>
+                    Wiggly waggly, you're my prismatic light<br>
+                    From Chennai to infinity, hand in hand we'll go<br>
+                    Shreyansh and Maanya, our love in full rainbow
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="content">
+            <h2>Love's Spectrum</h2>
+            <div class="love-meter">
+                <div class="love-meter-fill"></div>
+            </div>
+            <p>Click anywhere to see our love's vibrant intensity</p>
+        </div>
+    </div>
+
+    <div class="floating-hearts"></div>
+
+    <script>
+        // Three.js background
+        let scene, camera, renderer, particles;
+
+        function initThreeJS() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const colors = [];
+
+            for (let i = 0; i < 10000; i++) {
+                vertices.push(THREE.MathUtils.randFloatSpread(2000));
+                vertices.push(THREE.MathUtils.randFloatSpread(2000));
+                vertices.push(THREE.MathUtils.randFloatSpread(2000));
+
+                colors.push(Math.random(), Math.random(), Math.random());
+            }
+
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+            const material = new THREE.PointsMaterial({ size: 2, vertexColors: true });
+            particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+
+            camera.position.z = 1000;
+        }
+
+        function animateThreeJS() {
+            requestAnimationFrame(animateThreeJS);
+            particles.rotation.x += 0.0005;
+            particles.rotation.y += 0.0005;
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        window.addEventListener('resize', onWindowResize, false);
+
+        initThreeJS();
+        animateThreeJS();
+
+        // GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from("h1", {duration: 1.5, opacity: 0, y: 50, ease: "power3.out"});
+        gsap.from(".calligraphy", {duration: 1.5, opacity: 0, y: 30, ease: "power3.out", delay: 0.5});
+
+        gsap.from(".poem", {
+            scrollTrigger: {
+                trigger: ".poem",
+                start: "top 80%"
+            },
+            duration: 1.5,
+            opacity: 0,
+            y: 50,
+            ease: "power3.out"
+        });
+
+        // Love meter
+        const loveMeter = document.querySelector('.love-meter-fill');
+        document.body.addEventListener('click', () => {
+            const lovePercentage = Math.floor(Math.random() * 11) + 90; // 90-100%
+            loveMeter.style.width = `${lovePercentage}%`;
+            createFloatingHearts(20);
+        });
+
+        function createFloatingHearts(count) {
+            const container = document.querySelector('.floating-hearts');
+            const colors = ['#FF3366', '#33CCFF', '#FFCC00'];
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
+                container.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }
+        }
+    </script>
+</body>
+</html>
